@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fjh.admin.manual.dao.AddSysUserRoleMapper">
+    <resultMap id="BaseResultMap" type="com.fjh.admin.auto.model.SysUserRole">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="role_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="create_by" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="last_update_by" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="last_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, user_id, role_id, create_by, create_time, last_update_by, last_update_time
+    </sql>
+    <select id="findUserRoles" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_user_role
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByUserId" parameterType="java.lang.Long">
+        delete from sys_user_role
+        where user_id = #{userId,jdbcType=BIGINT}
+    </delete>
+</mapper>

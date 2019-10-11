@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fjh.admin.manual.dao.AddSysDeptMapper">
+    <resultMap id="BaseResultMap" type="com.fjh.admin.auto.model.SysDept">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="parent_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="order_num" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="create_by" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="last_update_by" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="last_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="del_flag" javaType="java.lang.Byte" jdbcType="TINYINT"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, parent_id, order_num, create_by, create_time, last_update_by, last_update_time,
+        del_flag
+    </sql>
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dept
+    </select>
+    <select id="findPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dept
+    </select>
+</mapper>
