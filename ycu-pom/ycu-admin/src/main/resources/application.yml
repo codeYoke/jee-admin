@@ -3,8 +3,15 @@ server:
   port: 80
 servlet:
   context-path: /
-# 数据源
+
 spring:
+  application:
+    name: ycu-admin
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8000"
+   # 数据源
   datasource:
     name: druidDataSource
     type: com.alibaba.druid.pool.DruidDataSource
@@ -27,3 +34,13 @@ spring:
       pool-prepared-statements: true
       max-open-prepared-statements: 50
       max-pool-prepared-statement-per-connection-size: 20
+
+#endpoints是开放监控接口，* 表示所有的接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

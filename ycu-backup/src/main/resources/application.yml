@@ -1,0 +1,28 @@
+# tomcat
+server:
+  port: 8002
+spring:
+  application:
+    name: ycu-backup
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8000"
+
+#endpoints是开放监控接口，* 表示所有的接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# backup datasource
+ycu:
+  backup:
+    datasource:
+      host: localhost
+      userName: root
+      password: 123456
+      database: manage_system
+
+
