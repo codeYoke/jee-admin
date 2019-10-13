@@ -1,5 +1,17 @@
 server:
   port: 8000
-  spring:
-    application:
-      name: ycu-monitor
+spring:
+  application:
+    name: ycu-monitor
+
+  #注册服务
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+      discovery:
+        service-name: ${spring.application.name}
+
+
+

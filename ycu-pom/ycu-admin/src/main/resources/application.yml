@@ -11,6 +11,7 @@ spring:
     admin:
       client:
         url: "http://localhost:8000"
+
    # 数据源
   datasource:
     name: druidDataSource
@@ -34,6 +35,13 @@ spring:
       pool-prepared-statements: true
       max-open-prepared-statements: 50
       max-pool-prepared-statement-per-connection-size: 20
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+
 
 #endpoints是开放监控接口，* 表示所有的接口
 management:

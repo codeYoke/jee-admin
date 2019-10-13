@@ -8,6 +8,12 @@ spring:
     admin:
       client:
         url: "http://localhost:8000"
+  cloud:
+    consul:
+      port: 8500
+      host: localhost
+      discovery:
+        service-name: ${spring.application.name}
 
 #endpoints是开放监控接口，* 表示所有的接口
 management:
@@ -15,6 +21,7 @@ management:
     web:
       exposure:
         include: "*"
+
 
 # backup datasource
 ycu:
